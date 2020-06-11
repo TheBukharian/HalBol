@@ -2,6 +2,9 @@ package com.example.googlemapsexample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import com.example.googlemapsexample.Utilities.EXTRA_LATLONG
+import com.example.googlemapsexample.Utilities.Loc
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -13,14 +16,17 @@ import com.google.android.gms.maps.model.MarkerOptions
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
-
-    private var latitude:Double=0.toDouble()
-    private var longitude:Double=0.toDouble()
-
+    lateinit var location:Loc
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
+
+
+        location=intent.getParcelableExtra(EXTRA_LATLONG)
+
+        Toast.makeText(this,"${location.Longitude}",Toast.LENGTH_LONG).show()
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
 
         val mapFragment = supportFragmentManager
@@ -32,9 +38,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
+        val lat=location.Latitude.toDouble()
+        val long =location.Longitude.toDouble()
+
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(latitude,longitude)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+        val sydney = LatLng(lat,long)
+        mMap.addMarker(MarkerOptions().position(sydney).title("Photo was taken there"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
 }

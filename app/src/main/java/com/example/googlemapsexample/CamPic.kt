@@ -7,13 +7,14 @@ import android.app.Activity
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.location.Location
 import android.media.ExifInterface
 import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
+import com.example.googlemapsexample.Utilities.EXTRA_LATLONG
+import com.example.googlemapsexample.Utilities.Loc
 import kotlinx.android.synthetic.main.activity_cam_pic.*
 
 import java.io.IOException
@@ -24,14 +25,13 @@ class CamPic : AppCompatActivity() {
             private val PERMISSION_CODE = 1000
             private val IMAGE_CAPTURE_CODE = 1001
             var image_uri: Uri? = null
-    var latitude: Double? = null
-    var longitude: Double? = null
+
+    var location= Loc("","")
 
 
             override fun onCreate(savedInstanceState: Bundle?) {
                 super.onCreate(savedInstanceState)
                 setContentView(R.layout.activity_cam_pic)
-
 
                 capture_btn.setOnClickListener {
 
@@ -57,6 +57,8 @@ class CamPic : AppCompatActivity() {
                         openCamera()
                     }
                 }
+
+
             }
 
     private fun openCamera() {
@@ -129,9 +131,15 @@ class CamPic : AppCompatActivity() {
                 Log.d("CamPic","Couldn't read exif info: " + e.getLocalizedMessage())
             }
 
-            latitude=latLong[0].toDouble()
-            longitude=latLong[1].toDouble()
+            location.Latitude=latLong[0].toString()
+            location.Longitude=latLong[1].toString()
 
+            mapBtn.setOnClickListener {
+
+                val mapActivity=Intent(this,MapsActivity::class.java)
+                mapActivity.putExtra(EXTRA_LATLONG,location)
+                startActivity(mapActivity)
+            }
 
 
 

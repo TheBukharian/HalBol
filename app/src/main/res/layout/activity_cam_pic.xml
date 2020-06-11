@@ -26,13 +26,12 @@
 
     <!--Button to open camera-->
     <Button
-        android:id="@+id/pathBtn"
+        android:id="@+id/mapBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Show path"
         android:layout_gravity="center_vertical"
         android:layout_marginTop="10dp"
-        />
+        android:text="Show in Map" />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
