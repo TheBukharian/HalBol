@@ -110,6 +110,8 @@ class CamPic : AppCompatActivity() {
                Lat.text= exif.getAttribute(ExifInterface.TAG_GPS_LATITUDE)
                Long.text= exif.getAttribute(ExifInterface.TAG_GPS_LONGITUDE)
 
+            
+
 
 
         }
