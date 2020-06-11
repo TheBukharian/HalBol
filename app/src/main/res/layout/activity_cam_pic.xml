@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".CamPic">
+
+    <!--ImageView in which image will be set-->
+    <ImageView
+        android:id="@+id/PhotoCaptured"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:background="@android:drawable/alert_light_frame"
+        android:scaleType="centerCrop" />
+    <Button
+        android:id="@+id/capture_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Capture Image"
+        />
+
+
+
+    <!--Button to open camera-->
+    <Button
+        android:id="@+id/pathBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show path"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:id="@+id/Long"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Longitude"
+            android:layout_marginEnd="30dp"
+            />
+        <TextView
+            android:id="@+id/Lat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Latitude"/>
+    </LinearLayout>
+
+</LinearLayout>
