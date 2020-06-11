@@ -39,14 +39,14 @@
         android:orientation="horizontal"
         android:layout_marginTop="20dp">
         <TextView
-            android:id="@+id/Long"
+            android:id="@+id/LongID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Longitude"
             android:layout_marginEnd="30dp"
             />
         <TextView
-            android:id="@+id/Lat"
+            android:id="@+id/LatID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Latitude"/>

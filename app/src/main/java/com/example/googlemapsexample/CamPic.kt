@@ -7,18 +7,16 @@ import android.app.Activity
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Location
 import android.media.ExifInterface
 import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_cam_pic.*
 
-
-
-
-
-
+import java.io.IOException
 
 
 class CamPic : AppCompatActivity() {
@@ -26,6 +24,9 @@ class CamPic : AppCompatActivity() {
             private val PERMISSION_CODE = 1000
             private val IMAGE_CAPTURE_CODE = 1001
             var image_uri: Uri? = null
+    var latitude: Double? = null
+    var longitude: Double? = null
+
 
             override fun onCreate(savedInstanceState: Bundle?) {
                 super.onCreate(savedInstanceState)
@@ -58,7 +59,7 @@ class CamPic : AppCompatActivity() {
                 }
             }
 
-            private fun openCamera() {
+    private fun openCamera() {
                 val values = ContentValues()
                 values.put(MediaStore.Images.Media.TITLE, "New Picture")
                 values.put(MediaStore.Images.Media.DESCRIPTION, "From the Camera")
@@ -70,8 +71,7 @@ class CamPic : AppCompatActivity() {
                 startActivityForResult(cameraIntent, IMAGE_CAPTURE_CODE)
             }
 
-
-            override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
 
                 //called when user presses ALLOW or DENY from Permission Request Popup
                 when(requestCode){
@@ -90,33 +90,6 @@ class CamPic : AppCompatActivity() {
                 }
             }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        //called when image was captured from camera intent
-
-        if (resultCode == Activity.RESULT_OK){
-            //set image captured to image view
-            PhotoCaptured.setImageURI(image_uri)
-
-
-            //get image description
-            val imageRealPath =  getRealPathFromURI(image_uri!!)
-
-
-            Toast.makeText(this,getRealPathFromURI(image_uri!!),Toast.LENGTH_LONG).show()
-
-            val exif = ExifInterface(imageRealPath)
-               Lat.text= exif.getAttribute(ExifInterface.TAG_GPS_LATITUDE)
-               Long.text= exif.getAttribute(ExifInterface.TAG_GPS_LONGITUDE)
-
-            
-
-
-
-        }
-    }
-
     private fun getRealPathFromURI(contentURI: Uri): String? {
         val result: String?
         val cursor = contentResolver.query(contentURI, null, null, null, null)
@@ -130,6 +103,42 @@ class CamPic : AppCompatActivity() {
         }
         return result
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        //called when image was captured from camera intent
+
+        if (resultCode == Activity.RESULT_OK){
+            //set image captured to image view
+            PhotoCaptured.setImageURI(image_uri)
+
+
+            //get image description
+            val imageRealPath =  getRealPathFromURI(image_uri!!)
+            val exif = ExifInterface(imageRealPath)
+            val latLong = FloatArray(2)
+
+            try {
+                if (exif.getLatLong(latLong)) {
+                    LatID.text="Latitude: "+latLong[0].toString()
+                    LongID.text="Longitude: "+latLong[1].toString()
+
+                }
+            } catch (e: IOException) {
+                Log.d("CamPic","Couldn't read exif info: " + e.getLocalizedMessage())
+            }
+
+            latitude=latLong[0].toDouble()
+            longitude=latLong[1].toDouble()
+
+
+
+
+        }
+    }
+
+
 
 }
 
