@@ -17,9 +17,7 @@ import com.example.googlemapsexample.Utilities.EXTRA_LATLONG
 import com.example.googlemapsexample.Utilities.Loc
 import kotlinx.android.synthetic.main.activity_cam_pic.*
 import java.io.IOException
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
 
 
 
@@ -78,6 +76,8 @@ class CamPic : AppCompatActivity() {
                 //permission already granted
                 openCamera()
             }
+
+            Thread.sleep(2500)
             mapBtn.visibility = View.VISIBLE
 
         }
@@ -90,21 +90,24 @@ class CamPic : AppCompatActivity() {
         values.put(MediaStore.Images.Media.DESCRIPTION, "From the Camera")
         image_uri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)!!
 
-        Log.d("BEFORE URI", "${image_uri}")
 
 
         val cursor = contentResolver.query(image_uri, null, null, null)
         var result: String? = ""
 
         if (cursor == null) {
-            Log.d("CURSOR", "CURSOR IS NULL")
+            Log.d("CURSOR", "CURSOR IS NULL or : "+cursor)
 
         } else {
 
             cursor.moveToFirst()
             val idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)
             result = cursor.getString(idx)
+            Log.d("CURSOR", "RESULT IS : "+result)
+
             image_uri = Uri.withAppendedPath(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, result)
+            Log.d("CURSOR", "Image uri IS : "+image_uri)
+
 
             cursor.close()
         }
