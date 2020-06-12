@@ -42,6 +42,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val long =location.Longitude.toDouble()
 
         // Add a marker in Sydney and move the camera
+
         val address = LatLng(lat,long)
         mMap.addMarker(MarkerOptions().position(address).title("Photo was taken there"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(address))

@@ -12,15 +12,18 @@
     <ImageView
         android:id="@+id/PhotoCaptured"
         android:layout_width="400dp"
+        android:contentDescription="@string/app_name"
         android:layout_height="400dp"
         android:background="@android:drawable/alert_light_frame"
         android:scaleType="centerCrop" />
+
     <Button
         android:id="@+id/capture_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#FFFFFF"
         android:text="Capture Image"
-        />
+        android:elevation="6dp"/>
 
 
 
@@ -31,24 +34,27 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginTop="10dp"
-        android:text="Show in Map" />
+        android:text="Show in Map"
+        android:visibility="gone"
+        android:backgroundTint="#FFFFFF"
+        android:elevation="6dp"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="100dp">
         <TextView
             android:id="@+id/LongID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Longitude"
+            android:text=""
             android:layout_marginEnd="30dp"
             />
         <TextView
             android:id="@+id/LatID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Latitude"/>
+            android:text=""/>
     </LinearLayout>
 
 </LinearLayout>
