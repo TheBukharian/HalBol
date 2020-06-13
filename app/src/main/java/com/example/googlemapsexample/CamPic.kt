@@ -27,7 +27,6 @@ class CamPic : AppCompatActivity() {
     private val PERMISSION_CODE = 1000
     private val IMAGE_CAPTURE_CODE = 1001
     var image_uri: Uri = Uri.EMPTY
-    var pic_uri: Uri? = null
 
 
     var location = Loc("", "")
@@ -57,6 +56,8 @@ class CamPic : AppCompatActivity() {
                 checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
                 == PackageManager.PERMISSION_DENIED||
                 checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_DENIED ||
+                checkSelfPermission(Manifest.permission.ACCESS_BACKGROUND_LOCATION)
                 == PackageManager.PERMISSION_DENIED
 
             ) {
@@ -67,8 +68,10 @@ class CamPic : AppCompatActivity() {
                     Manifest.permission.WRITE_EXTERNAL_STORAGE,
                     Manifest.permission.READ_EXTERNAL_STORAGE,
                     Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-                    )
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_BACKGROUND_LOCATION
+
+                )
 
                 //show popup to request permission
                 requestPermissions(permission, PERMISSION_CODE)
@@ -91,32 +94,9 @@ class CamPic : AppCompatActivity() {
         image_uri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)!!
 
 
-
-        val cursor = contentResolver.query(image_uri, null, null, null)
-        var result: String? = ""
-
-        if (cursor == null) {
-            Log.d("CURSOR", "CURSOR IS NULL or : "+cursor)
-
-        } else {
-
-            cursor.moveToFirst()
-            val idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)
-            result = cursor.getString(idx)
-            Log.d("CURSOR", "RESULT IS : "+result)
-
-            image_uri = Uri.withAppendedPath(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, result)
-            Log.d("CURSOR", "Image uri IS : "+image_uri)
-
-
-            cursor.close()
-        }
-
-
         //camera intent
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri)
-        setResult(Activity.RESULT_OK)
         startActivityForResult(cameraIntent, IMAGE_CAPTURE_CODE)
     }
 
@@ -143,6 +123,29 @@ class CamPic : AppCompatActivity() {
         }
     }
 
+    fun getPath(){
+        val projection = arrayOf(MediaStore.Images.Media.DATA)
+        val cursor = contentResolver.query(image_uri, projection, null, null)
+        var result: String? = ""
+
+        if (cursor == null) {
+            Log.d("CURSOR", "CURSOR IS NULL or : "+cursor)
+
+        } else {
+
+            val idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)
+            cursor.moveToFirst()
+            result = cursor.getString(idx)
+            Log.d("CURSOR", "RESULT IS : "+result)
+
+            image_uri = Uri.withAppendedPath(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, result)
+            Log.d("CURSOR", "Image uri IS : "+image_uri)
+            cursor.close()
+        }
+    }
+
+
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -150,6 +153,11 @@ class CamPic : AppCompatActivity() {
         //called when image was captured from camera intent
 
         if (resultCode == Activity.RESULT_OK) {
+            Log.d("NOPE", "${resultCode}")
+
+
+            getPath()
+
             //set image captured to image view
             PhotoCaptured.setImageURI(image_uri)
 
@@ -177,17 +185,17 @@ class CamPic : AppCompatActivity() {
                 latLong[1] = 0.0F
 
             }
+
+
+
             location.Latitude=latLong[0].toString()
             location.Longitude=latLong[1].toString()
-
         }
 
         else{
             Log.d("NOPE", "${resultCode}")
             Log.d("NOPE", "${requestCode}")
             Log.d("NOPE", "${Activity.RESULT_OK}")
-
-
         }
     }
 }
