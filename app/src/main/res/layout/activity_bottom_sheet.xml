@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/bottomshheet"
+    android:background="@drawable/pressed"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    app:behavior_hideable="false"
+    app:behavior_peekHeight="?attr/actionBarSize"
+    tools:context=".CamPic"
+    >
+
+    <LinearLayout
+        android:id="@+id/DescribeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:clickable="true"
+
+        >
+
+        <ImageView
+            android:layout_marginStart="80dp"
+            android:layout_gravity="center_vertical"
+            android:backgroundTint="#64B7EE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/ic_dialog_email" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Describe the problem"
+            android:layout_gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:textStyle="italic"
+            android:textSize="18sp"
+            android:fontFamily="sans-serif-black"
+
+            />
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#3B4B4444"
+        android:layout_marginTop="20dp"/>
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:layout_marginStart="30dp"
+    android:layout_marginEnd="30dp"
+    android:layout_marginTop="25dp"
+    android:layout_weight="3">
+    <ToggleButton
+        android:id="@+id/defaultBtn"
+        android:layout_weight="1"
+        android:textOff="Default"
+        android:textOn="Default"
+        android:checked="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttons_checked"
+
+        android:text="Default"/>
+    <ToggleButton
+        android:id="@+id/problemBtn"
+        android:layout_weight="1"
+        android:text="Problem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="Problem"
+        android:checked="false"
+        android:textOn="Problem"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/buttons_checked"/>
+    <ToggleButton
+        android:id="@+id/businessBtn"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:text="Business"
+        android:checked="false"
+        android:textOff="Business"
+        android:textOn="Business"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttons_checked"/>
+
+</LinearLayout>
+
+    <EditText
+        android:layout_width="338dp"
+        android:layout_height="70dp"
+        android:elevation="10dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/buttonzzz"
+        android:backgroundTint="#E2FFFFFF"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:layout_width="220dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/bottom_sheet_btn"
+        android:elevation="3dp"
+        android:text="Apply"
+        android:textColor="#ffff" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="45dp"/>
+
+
+
+
+
+</LinearLayout>

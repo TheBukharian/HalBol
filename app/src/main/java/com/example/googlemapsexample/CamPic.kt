@@ -13,8 +13,10 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import com.example.googlemapsexample.Utilities.EXTRA_LATLONG
-import com.example.googlemapsexample.Utilities.Loc
+import com.example.googlemapsexample.Models.EXTRA_LATLONG
+import com.example.googlemapsexample.Models.Loc
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import kotlinx.android.synthetic.main.activity_bottom_sheet.*
 import kotlinx.android.synthetic.main.activity_cam_pic.*
 import java.io.IOException
 
@@ -35,6 +37,33 @@ class CamPic : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cam_pic)
+        val bottomSheetBehavior=BottomSheetBehavior.from(bottomshheet)
+        bottomSheetBehavior.state=BottomSheetBehavior.STATE_COLLAPSED
+
+
+        DescribeLayout.setOnClickListener {
+            if(bottomSheetBehavior.state!=BottomSheetBehavior.STATE_EXPANDED){
+            bottomSheetBehavior.state=BottomSheetBehavior.STATE_EXPANDED
+            }else{
+                bottomSheetBehavior.state=BottomSheetBehavior.STATE_COLLAPSED
+            }
+        }
+        defaultBtn.setOnClickListener {
+
+            defaultBtn.isChecked=true
+            problemBtn.isChecked=false
+            businessBtn.isChecked=false
+        }
+        problemBtn.setOnClickListener {
+            defaultBtn.isChecked=false
+            problemBtn.isChecked=true
+            businessBtn.isChecked=false
+        }
+        businessBtn.setOnClickListener {
+            defaultBtn.isChecked=false
+            problemBtn.isChecked=false
+            businessBtn.isChecked=true
+        }
         mapBtn.setOnClickListener {
 
             Log.d("THEN URI", "${image_uri}")
@@ -43,7 +72,6 @@ class CamPic : AppCompatActivity() {
             mapActivity.putExtra(EXTRA_LATLONG, location)
             startActivity(mapActivity)
         }
-
         capture_btn.setOnClickListener {
 
             //if system os is Marshmallow or Above, we need to request runtime permission
@@ -186,6 +214,9 @@ class CamPic : AppCompatActivity() {
 
             }
 
+            val bottomSheetBehavior=BottomSheetBehavior.from(bottomshheet)
+
+            bottomSheetBehavior.state=BottomSheetBehavior.STATE_EXPANDED
 
 
             location.Latitude=latLong[0].toString()

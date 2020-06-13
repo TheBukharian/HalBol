@@ -1,27 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
     tools:context=".CamPic">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#EEEEEE"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        tools:context=".CamPic">
 
     <!--ImageView in which image will be set-->
-    <ImageView
-        android:id="@+id/PhotoCaptured"
-        android:layout_width="400dp"
-        android:contentDescription="@string/app_name"
-        android:layout_height="400dp"
-        android:background="@android:drawable/alert_light_frame"
-        android:scaleType="centerCrop" />
 
-    <Button
+        <ImageView
+            android:id="@+id/PhotoCaptured"
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
+            android:layout_marginBottom="350dp"
+            android:backgroundTint="#2C2727"
+            android:background="@android:drawable/alert_light_frame"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop" />
+
+        <Button
         android:id="@+id/capture_btn"
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
+            android:layout_marginStart="30dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="#FFFFFF"
+            android:layout_marginTop="370dp"
+        android:backgroundTint="#64B7EE"
         android:text="Capture Image"
         android:elevation="6dp"/>
 
@@ -30,21 +44,23 @@
     <!--Button to open camera-->
     <Button
         android:id="@+id/mapBtn"
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="370dp"
+        android:layout_marginStart="150dp"
         android:text="Show in Map"
-        android:visibility="gone"
+        android:visibility="visible"
         android:backgroundTint="#FFFFFF"
         android:elevation="6dp"/>
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:weightSum="2"
         android:orientation="horizontal"
-        android:layout_marginTop="100dp">
+        android:layout_marginTop="640dp">
         <TextView
             android:id="@+id/LongID"
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
@@ -52,9 +68,12 @@
             />
         <TextView
             android:id="@+id/LatID"
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""/>
     </LinearLayout>
+    </RelativeLayout>
+    <include layout="@layout/activity_bottom_sheet"/>
 
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

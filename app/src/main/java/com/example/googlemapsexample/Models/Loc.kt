@@ -1,4 +1,4 @@
-package com.example.googlemapsexample.Utilities
+package com.example.googlemapsexample.Models
 
 import android.os.Parcel
 import android.os.Parcelable
