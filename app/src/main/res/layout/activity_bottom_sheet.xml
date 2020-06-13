@@ -91,15 +91,26 @@
         android:background="@drawable/buttons_checked"/>
 
 </LinearLayout>
+    <com.sdsmdg.harjot.materialshadows.MaterialShadowViewWrapper
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <EditText
-        android:layout_width="338dp"
-        android:layout_height="70dp"
-        android:elevation="10dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/buttonzzz"
-        android:backgroundTint="#E2FFFFFF"
-        android:layout_gravity="center_horizontal"/>
+        <EditText
+            android:layout_width="338dp"
+            android:layout_height="70dp"
+            android:elevation="5dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:hint="Enter text..."
+            android:paddingStart="20dp"
+            android:background="@drawable/buttonzzz"
+            android:backgroundTint="#E2FFFFFF"
+            android:layout_gravity="center_horizontal"/>
+
+    </com.sdsmdg.harjot.materialshadows.MaterialShadowViewWrapper>
+
 
     <Button
         android:layout_width="220dp"
