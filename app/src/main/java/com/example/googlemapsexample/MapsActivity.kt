@@ -38,12 +38,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-//        val lat=location.Latitude.toDouble()
-//        val long =location.Longitude.toDouble()
+        val lat=location.Latitude.toDouble()
+        val long =location.Longitude.toDouble()
 
         // Add a marker in Sydney and move the camera
 
-        val address = LatLng(0.0,0.0)
+        val address = LatLng(lat,long)
         mMap.addMarker(MarkerOptions().position(address).title("Photo was taken there"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(address))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(address, 16f))
