@@ -29,30 +29,36 @@
             android:contentDescription="@string/app_name"
             android:scaleType="centerCrop" />
 
-        <Button
-        android:id="@+id/capture_btn"
-        android:layout_width="100dp"
+        <ImageButton
+            android:id="@+id/capture_btn"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:layout_marginStart="30dp"
-        android:layout_height="wrap_content"
-            android:layout_marginTop="370dp"
-        android:backgroundTint="#64B7EE"
-        android:text="Capture Image"
-        android:elevation="6dp"/>
+            android:layout_marginTop="330dp"
+            android:background="@drawable/cam_btn"
+            android:backgroundTint="#64B7EE"
+            android:elevation="6dp"
+            android:src="@android:drawable/ic_menu_camera" />
 
 
 
     <!--Button to open camera-->
-    <Button
-        android:id="@+id/mapBtn"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="370dp"
-        android:layout_marginStart="150dp"
-        android:text="Show in Map"
-        android:visibility="visible"
-        android:backgroundTint="#FFFFFF"
-        android:elevation="6dp"/>
-    <LinearLayout
+        <Button
+            android:id="@+id/mapBtn"
+            android:layout_width="190dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="370dp"
+            android:background="@drawable/cam_btn2"
+            android:backgroundTint="#FFFFFF"
+            android:drawableLeft="@android:drawable/ic_dialog_map"
+            android:drawableTint="#80DD59"
+            android:paddingLeft="20dp"
+            android:elevation="6dp"
+            android:text="Show in Map"
+            android:visibility="visible" />
+
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="2"
