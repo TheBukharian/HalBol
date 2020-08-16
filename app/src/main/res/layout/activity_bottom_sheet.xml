@@ -59,8 +59,8 @@
     <ToggleButton
         android:id="@+id/defaultBtn"
         android:layout_weight="1"
-        android:textOff="Default"
-        android:textOn="Default"
+        android:textOff="Corruption"
+        android:textOn="Corruption"
         android:checked="false"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -70,12 +70,11 @@
     <ToggleButton
         android:id="@+id/problemBtn"
         android:layout_weight="1"
-        android:text="Problem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textOff="Problem"
+        android:textOff="Committee"
         android:checked="false"
-        android:textOn="Problem"
+        android:textOn="Committee"
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
         android:background="@drawable/buttons_checked"/>
@@ -93,11 +92,12 @@
 </LinearLayout>
     <com.sdsmdg.harjot.materialshadows.MaterialShadowViewWrapper
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        app:shadowOffsetX="10"
+        app:shadowOffsetY="10">
         <EditText
             android:layout_width="336dp"
-            android:layout_height="78dp"
+            android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginStart="40dp"
             android:layout_marginTop="30dp"
@@ -106,11 +106,14 @@
             android:background="@drawable/buttonzzz"
             android:backgroundTint="#E2FFFFFF"
             android:elevation="5dp"
-            android:hint="Enter text..."
+            android:hint="Short description..."
+            android:paddingTop="20dp"
             android:paddingStart="20dp"
+            android:paddingEnd="20dp"
             android:paddingBottom="30dp" />
 
     </com.sdsmdg.harjot.materialshadows.MaterialShadowViewWrapper>
+
 
 
     <Button
@@ -118,9 +121,10 @@
         android:layout_height="55dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="100dp"
-        android:background="@drawable/bottom_sheet_btn"
+        android:background="@drawable/cam_btn2"
+        android:backgroundTint="#A5E889"
         android:elevation="3dp"
-        android:text="Apply"
+        android:text="Send"
         android:textColor="#ffff" />
 
     <Space
