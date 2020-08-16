@@ -17,6 +17,18 @@
         android:gravity="center"
         tools:context=".CamPic">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#EEEEEE"
+            android:layout_marginBottom="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:gravity="center">
+
     <!--ImageView in which image will be set-->
 
         <ImageView
@@ -25,45 +37,71 @@
             android:layout_height="360dp"
             android:layout_marginBottom="350dp"
             android:backgroundTint="#2C2727"
-            android:background="@android:drawable/alert_light_frame"
+            android:background="#fff"
             android:contentDescription="@string/app_name"
             android:scaleType="centerCrop" />
 
-        <ImageButton
-            android:id="@+id/capture_btn"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="330dp"
-            android:background="@drawable/cam_btn"
-            android:backgroundTint="#64B7EE"
-            android:elevation="6dp"
-            android:src="@android:drawable/ic_menu_camera" />
+            <ImageButton
+                android:id="@+id/capture_btn"
+                android:layout_width="120dp"
+                android:layout_height="95dp"
+                android:layout_below="@+id/PhotoCaptured"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="-390dp"
+                android:background="@drawable/cam_btn"
+                android:backgroundTint="#64B7EE"
+                android:elevation="6dp"
+                android:src="@android:drawable/ic_menu_camera" />
 
 
 
     <!--Button to open camera-->
-        <Button
-            android:id="@+id/mapBtn"
-            android:layout_width="190dp"
-            android:layout_height="65dp"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="370dp"
-            android:background="@drawable/cam_btn2"
-            android:backgroundTint="#FFFFFF"
-            android:drawableLeft="@android:drawable/ic_dialog_map"
-            android:drawableTint="#80DD59"
-            android:paddingLeft="20dp"
-            android:elevation="6dp"
-            android:text="Show in Map"
-            android:visibility="visible" />
+
+            <Button
+                android:id="@+id/mapBtn"
+                android:layout_width="200dp"
+                android:layout_height="65dp"
+                android:layout_alignBottom="@+id/capture_btn"
+                android:layout_marginStart="210dp"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/cam_btn2"
+                android:backgroundTint="#FFFFFF"
+                android:drawableLeft="@android:drawable/ic_dialog_map"
+                android:drawableTint="#90DD59"
+                android:elevation="6dp"
+                android:paddingLeft="30dp"
+                android:text="Show in Map"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/separation"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/capture_btn"
+                android:layout_marginTop="40dp"
+                android:background="#fff"
+                />
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/separation"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="In order to show the scene of problem, press a blue button on your left.
+You also may check that scene location on the map after taking a picture.
+Don`t forget to describe your issue to get the best solving performance by our specialists."
+                />
 
         <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="2"
         android:orientation="horizontal"
-        android:layout_marginTop="640dp">
+            android:gravity="center"
+        android:layout_marginTop="690dp"
+            >
         <TextView
             android:id="@+id/LongID"
             android:layout_weight="1"
@@ -79,6 +117,7 @@
             android:layout_height="wrap_content"
             android:text=""/>
     </LinearLayout>
+        </RelativeLayout>
     </RelativeLayout>
     <include layout="@layout/activity_bottom_sheet"/>
 
