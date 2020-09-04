@@ -22,12 +22,13 @@
         >
 
         <ImageView
-            android:layout_marginStart="80dp"
-            android:layout_gravity="center_vertical"
-            android:backgroundTint="#64B7EE"
+            android:id="@+id/sendIMG"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:drawable/ic_dialog_email" />
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="80dp"
+            android:background="@android:drawable/ic_dialog_email"
+            android:backgroundTint="#64B7EE" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -90,6 +91,13 @@
         android:background="@drawable/buttons_checked"/>
 
 </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Type a short description for your problem:"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="30dp"
+        />
     <com.sdsmdg.harjot.materialshadows.MaterialShadowViewWrapper
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -100,19 +108,19 @@
             android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="40dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/buttonzzz"
             android:backgroundTint="#E2FFFFFF"
             android:elevation="5dp"
-            android:hint="Short description..."
             android:paddingTop="20dp"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:paddingBottom="30dp" />
 
     </com.sdsmdg.harjot.materialshadows.MaterialShadowViewWrapper>
+
 
 
 

@@ -7,13 +7,13 @@ import android.app.Activity
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.media.CameraProfile
 import android.media.ExifInterface
 import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.googlemapsexample.Models.EXTRA_LATLONG
@@ -33,9 +33,6 @@ class CamPic : AppCompatActivity() {
     private val IMAGE_CAPTURE_CODE = 1001
     var image_uri2: Uri = Uri.EMPTY
     var image_uri1: Uri? = null
-
-
-
     var location = Loc("", "")
 
 
@@ -43,7 +40,11 @@ class CamPic : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cam_pic)
         val bottomSheetBehavior=BottomSheetBehavior.from(bottomshheet)
+        val rotateIMG=AnimationUtils.loadAnimation(this,R.anim.senimage_rotation)
+
         bottomSheetBehavior.state=BottomSheetBehavior.STATE_COLLAPSED
+        sendIMG.startAnimation(rotateIMG)
+
 
 
         DescribeLayout.setOnClickListener {
@@ -227,6 +228,8 @@ class CamPic : AppCompatActivity() {
                     }
                     stream.close()
                 } else {
+                    Log.d("NOPE", "Failed to load the stream, so return the coordinates (0, 0).\n")
+
                     // Failed to load the stream, so return the coordinates (0, 0).
                     latLong[0] = 0.0F
                     latLong[1] = 0.0F

@@ -70,7 +70,7 @@
                 android:drawableTint="#90DD59"
                 android:elevation="6dp"
                 android:paddingLeft="30dp"
-                android:text="Show in Map"
+                android:text="Show on Map"
                 android:visibility="visible" />
 
             <TextView
@@ -89,9 +89,9 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
-                android:text="In order to show the scene of problem, press a blue button on your left.
-You also may check that scene location on the map after taking a picture.
-Don`t forget to describe your issue to get the best solving performance by our specialists."
+                android:text="In order to show scene of problem, press a blue button on your left.
+You also may check scene location on map after taking a picture. \n
+Don`t forget to describe your issue to get better solving performance by our specialists."
                 />
 
         <LinearLayout
