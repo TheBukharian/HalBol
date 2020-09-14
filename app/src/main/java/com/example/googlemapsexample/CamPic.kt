@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.Manifest
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -55,7 +56,6 @@ class CamPic : AppCompatActivity() {
             }
         }
         defaultBtn.setOnClickListener {
-
             defaultBtn.isChecked=true
             problemBtn.isChecked=false
             businessBtn.isChecked=false
@@ -71,13 +71,27 @@ class CamPic : AppCompatActivity() {
             businessBtn.isChecked=true
         }
         mapBtn.setOnClickListener {
+            if(PhotoCaptured.tag=="1"){
+                Log.d("THEN URI", "${image_uri2}")
+                val mapActivity = Intent(this, MapsActivity::class.java)
+                mapActivity.putExtra(EXTRA_LATLONG, location)
+                startActivity(mapActivity)
+            }else{
+                                                                                                       //Build  alert dialog
 
-            Log.d("THEN URI", "${image_uri2}")
-
-            val mapActivity = Intent(this, MapsActivity::class.java)
-            mapActivity.putExtra(EXTRA_LATLONG, location)
-            startActivity(mapActivity)
+                val alertBuild= AlertDialog.Builder(this@CamPic)
+                alertBuild.setTitle("No Image Selected!")
+                alertBuild.setIcon(R.mipmap.ic_launcher)
+                alertBuild.setMessage("Go back and capture image.")
+                alertBuild.setCancelable(true)
+                alertBuild.setPositiveButton("OK"){_,_->
+                    Toast.makeText(this@CamPic,"Clicked OK",Toast.LENGTH_LONG)
+                }
+                        val mAlert=alertBuild.create()
+                        mAlert.show()
+            }
         }
+
         capture_btn.setOnClickListener {
 
             //if system os is Marshmallow or Above, we need to request runtime permission
@@ -224,7 +238,7 @@ class CamPic : AppCompatActivity() {
                             LongID.text = "Longitude: " + latLong[1].toString()
                         }
                     } catch (e: IOException) {
-                        Log.d("CamPic", "Couldn't read exif info: " + e.getLocalizedMessage())
+                        Log.d("CamPic", "Couldn't read exif info: " + e.localizedMessage)
                     }
                     stream.close()
                 } else {
@@ -248,6 +262,7 @@ class CamPic : AppCompatActivity() {
         else {
             if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_CAPTURE_CODE) {
                 PhotoCaptured.setImageURI(image_uri1)
+                PhotoCaptured.tag = "1"
 
                 //get image description
                 val imageRealPath = getPath1(image_uri1!!)
@@ -263,7 +278,7 @@ class CamPic : AppCompatActivity() {
                         LongID.text = "Longitude: " + latLong[1].toString()
                     }
                 } catch (e: IOException) {
-                    Log.d("CamPic", "Couldn't read exif info: " + e.getLocalizedMessage())
+                    Log.d("CamPic", "Couldn't read exif info: " + e.localizedMessage)
                 }
 
                 location.Latitude = latLong[0].toString()
