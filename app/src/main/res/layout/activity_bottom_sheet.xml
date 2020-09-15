@@ -125,6 +125,7 @@
 
 
     <Button
+        android:id="@+id/sendBtn"
         android:layout_width="220dp"
         android:layout_height="55dp"
         android:layout_gravity="center_horizontal"

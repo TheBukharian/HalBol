@@ -91,6 +91,9 @@ class CamPic : AppCompatActivity() {
                         mAlert.show()
             }
         }
+        sendBtn.setOnClickListener {
+
+        }
 
         capture_btn.setOnClickListener {
 
@@ -286,8 +289,16 @@ class CamPic : AppCompatActivity() {
 
             }
         }
+
+    }
+    private fun saveIssueToFirebaseDatabase(){
+
+    }
+    private fun uploadImageToFirebaseStorage(){
+
     }
 }
+class Issue (val description:String, val tag:String, val problemImageUri:String, val lat:Double, val long:Double)
 
 
 
