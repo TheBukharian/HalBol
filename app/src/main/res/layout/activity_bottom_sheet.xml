@@ -50,62 +50,47 @@
         android:layout_marginTop="20dp"/>
 
 
-<LinearLayout
+<com.skydoves.powerspinner.PowerSpinnerView
+    android:id="@+id/spinnerView"
     android:layout_width="match_parent"
-    android:layout_height="40dp"
-    android:layout_marginStart="30dp"
-    android:layout_marginEnd="30dp"
-    android:layout_marginTop="25dp"
-    android:layout_weight="3">
-    <ToggleButton
-        android:id="@+id/defaultBtn"
-        android:layout_weight="1"
-        android:textOff="Corruption"
-        android:textOn="Corruption"
-        android:checked="false"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/buttons_checked"
-
-        android:text="Default"/>
-    <ToggleButton
-        android:id="@+id/problemBtn"
-        android:layout_weight="1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textOff="Committee"
-        android:checked="false"
-        android:textOn="Committee"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
-        android:background="@drawable/buttons_checked"/>
-    <ToggleButton
-        android:id="@+id/businessBtn"
-        android:layout_weight="1"
-        android:layout_width="wrap_content"
-        android:text="Business"
-        android:checked="false"
-        android:textOff="Business"
-        android:textOn="Business"
-        android:layout_height="wrap_content"
-        android:background="@drawable/buttons_checked"/>
-
-</LinearLayout>
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:hint="Tag the problem here..."
+    android:padding="7dp"
+    android:paddingStart="20dp"
+    android:layout_marginTop="5dp"
+    android:textColor="#FFFFFF"
+    android:textColorHint="#8BFFFFFF"
+    android:textSize="14.5sp"
+    android:textStyle="bold"
+    app:spinner_arrow_gravity="end"
+    app:spinner_arrow_padding="8dp"
+    app:spinner_divider_color="#ffffff"
+    app:spinner_divider_size="0.4dp"
+    app:spinner_divider_show="true"
+    app:spinner_item_array="@array/tags"
+    app:spinner_popup_animation="fade"
+    app:spinner_popup_background="#C5E0F3"
+    app:spinner_popup_elevation="14dp"
+    />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Type a short description for your problem:"
-        android:layout_marginStart="45dp"
         android:layout_marginTop="30dp"
+        android:gravity="center"
         />
     <com.sdsmdg.harjot.materialshadows.MaterialShadowViewWrapper
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:shadowOffsetX="10"
         app:shadowOffsetY="10">
+
         <EditText
             android:layout_width="336dp"
             android:layout_height="150dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
             android:layout_gravity="center_horizontal"
             android:layout_marginStart="40dp"
             android:layout_marginTop="10dp"
@@ -114,8 +99,8 @@
             android:background="@drawable/buttonzzz"
             android:backgroundTint="#E2FFFFFF"
             android:elevation="5dp"
-            android:paddingTop="20dp"
             android:paddingStart="20dp"
+            android:paddingTop="20dp"
             android:paddingEnd="20dp"
             android:paddingBottom="30dp" />
 

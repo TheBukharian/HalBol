@@ -17,9 +17,12 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.googlemapsexample.Models.EXTRA_LATLONG
 import com.example.googlemapsexample.Models.Loc
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.skydoves.powerspinner.IconSpinnerAdapter
+import com.skydoves.powerspinner.IconSpinnerItem
 import kotlinx.android.synthetic.main.activity_bottom_sheet.*
 import kotlinx.android.synthetic.main.activity_cam_pic.*
 import java.io.IOException
@@ -35,6 +38,7 @@ class CamPic : AppCompatActivity() {
     var image_uri2: Uri = Uri.EMPTY
     var image_uri1: Uri? = null
     var location = Loc("", "")
+    lateinit var selectedTag:String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +52,7 @@ class CamPic : AppCompatActivity() {
 
 
 
+
         DescribeLayout.setOnClickListener {
             if(bottomSheetBehavior.state!=BottomSheetBehavior.STATE_EXPANDED){
             bottomSheetBehavior.state=BottomSheetBehavior.STATE_EXPANDED
@@ -55,21 +60,7 @@ class CamPic : AppCompatActivity() {
                 bottomSheetBehavior.state=BottomSheetBehavior.STATE_COLLAPSED
             }
         }
-        defaultBtn.setOnClickListener {
-            defaultBtn.isChecked=true
-            problemBtn.isChecked=false
-            businessBtn.isChecked=false
-        }
-        problemBtn.setOnClickListener {
-            defaultBtn.isChecked=false
-            problemBtn.isChecked=true
-            businessBtn.isChecked=false
-        }
-        businessBtn.setOnClickListener {
-            defaultBtn.isChecked=false
-            problemBtn.isChecked=false
-            businessBtn.isChecked=true
-        }
+
         mapBtn.setOnClickListener {
             if(PhotoCaptured.tag=="1"){
                 Log.d("THEN URI", "${image_uri2}")
@@ -91,9 +82,15 @@ class CamPic : AppCompatActivity() {
                         mAlert.show()
             }
         }
-        sendBtn.setOnClickListener {
+spinnerView.setOnClickListener {
+    spinnerView.showOrDismiss()
+    spinnerView.setOnSpinnerItemSelectedListener<String> { index, text ->
+        selectedTag=text.toString()
+        Toast.makeText(this, "${selectedTag}", Toast.LENGTH_SHORT).show()
+    }
 
-        }
+}
+
 
         capture_btn.setOnClickListener {
 

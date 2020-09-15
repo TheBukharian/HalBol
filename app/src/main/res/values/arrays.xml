@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tags">
+        <item>Corruption</item>
+        <item>Pollution</item>
+        <item>Neighbors</item>
+        <item>Dues</item>
+        <item>Health</item>
+        <item>Sanitation</item>
+        <item>Building</item>
+        <item>Enterprise</item>
+        <item>Working Stations</item>
+        <item>Cadaster</item>
+        <item>Electricity</item>
+        <item>Water Services</item>
+        <item>Heating Services</item>
+        <item>Road Construction</item>
+        <item>Family and Residence</item>
+        <item>Education Services</item>
+        <item>Gas</item>
+        <item>Government Service Workers</item>
+
+
+
+
+
+    </string-array>
+</resources>
