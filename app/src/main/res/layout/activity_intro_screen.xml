@@ -5,16 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EEEEEE"
     tools:context=".Models.IntroScreen">
 
     <LinearLayout
         android:id="@+id/introViewPagerLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/nextIntro"
-        android:layout_marginTop="650dp"
-
-        android:layout_marginBottom="20dp"
+        android:layout_below="@+id/introSliderViewPager2"
+        android:layout_marginTop="30dp"
         android:gravity="center"
         android:orientation="horizontal" />
 
@@ -35,34 +34,36 @@
         android:id="@+id/nextIntro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/skipBtn"
-        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="250dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="170dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="30dp"
+        android:layout_toEndOf="@+id/skipBtn"
         android:background="@drawable/cam_btn2"
         android:backgroundTint="@color/colorPrimary"
         android:minWidth="125dp"
         android:minHeight="50dp"
         android:text="Next"
-        android:textStyle="bold" />
+        android:textColor="#D8FFFFFF"
+        android:textStyle="italic" />
 
 
     <TextView
         android:id="@+id/skipBtn"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="35dp"
         android:layout_weight="1"
+        android:layout_marginStart="30dp"
         android:foregroundGravity="center_vertical"
         android:gravity="center_horizontal"
         android:text="Skip Intro"
+        android:clickable="true"
         android:textColor="@color/colorPrimary"
-        android:textSize="17sp"
+        android:textSize="14sp"
         android:textStyle="bold" />
 
 

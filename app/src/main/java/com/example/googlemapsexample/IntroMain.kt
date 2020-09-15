@@ -1,6 +1,8 @@
 package com.example.googlemapsexample
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -42,6 +44,22 @@ class IntroMain: AppCompatActivity() {
                 setcurrentIndicator(position)
             }
         })
+        nextIntro.setOnClickListener {
+            if (introSliderViewPager2.currentItem + 1 < introSliderAdapter.itemCount){
+                introSliderViewPager2.currentItem+=1
+            }else{
+                Intent(applicationContext,CamPic::class.java).also {
+                    startActivity(it)
+                    finish()
+                }
+            }
+        }
+        skipBtn.setOnClickListener {
+            Intent(applicationContext,CamPic::class.java).also {
+                startActivity(it)
+                finish()
+            }
+        }
     }
 
     private fun setupIndicators(){
