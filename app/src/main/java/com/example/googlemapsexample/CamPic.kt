@@ -15,6 +15,9 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.GridLayoutManager
@@ -38,7 +41,10 @@ class CamPic : AppCompatActivity() {
     var image_uri2: Uri = Uri.EMPTY
     var image_uri1: Uri? = null
     var location = Loc("", "")
-    lateinit var selectedTag:String
+    var selectedTag:String=""
+    var message:String=""
+    var access:Boolean=false
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,7 +64,33 @@ class CamPic : AppCompatActivity() {
             bottomSheetBehavior.state=BottomSheetBehavior.STATE_EXPANDED
             }else{
                 bottomSheetBehavior.state=BottomSheetBehavior.STATE_COLLAPSED
+                spinnerView.dismiss()
             }
+        }
+        applybtn.setOnClickListener {
+
+            message=messageEdit.text.toString()
+
+            val inflater = layoutInflater
+            val inflate_view=inflater.inflate(R.layout.problem_preview_alertdialog,null)
+
+            val PreviewTag =inflate_view.findViewById<Button>(R.id.preview_Tag)
+            val PreviewImage= inflate_view.findViewById<ImageView>(R.id.previewImg)
+            val PreviewText=inflate_view.findViewById<TextView>(R.id.preview_Text)
+            val PreviewBtn=inflate_view.findViewById<Button>(R.id.previewSend_Btn)
+
+
+            PreviewTag.text=selectedTag
+            PreviewImage.setImageURI(image_uri2)
+            PreviewText.text=message
+
+
+            val alertDialog=AlertDialog.Builder(this)
+            alertDialog.setView(inflate_view)
+            alertDialog.setCancelable(true)
+
+            val dialog=alertDialog.create()
+            dialog.show()
         }
 
         mapBtn.setOnClickListener {
@@ -82,14 +114,14 @@ class CamPic : AppCompatActivity() {
                         mAlert.show()
             }
         }
-spinnerView.setOnClickListener {
-    spinnerView.showOrDismiss()
-    spinnerView.setOnSpinnerItemSelectedListener<String> { index, text ->
-        selectedTag=text.toString()
-        Toast.makeText(this, "${selectedTag}", Toast.LENGTH_SHORT).show()
-    }
+        spinnerView.setOnClickListener {
+                spinnerView.showOrDismiss()
+                spinnerView.setOnSpinnerItemSelectedListener<String> { index, text ->
+                        selectedTag=text
+                        Toast.makeText(this, "${selectedTag}", Toast.LENGTH_SHORT).show()
+                }
+        }
 
-}
 
 
         capture_btn.setOnClickListener {

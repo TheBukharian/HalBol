@@ -87,6 +87,7 @@
         app:shadowOffsetY="10">
 
         <EditText
+            android:id="@+id/messageEdit"
             android:layout_width="336dp"
             android:layout_height="150dp"
             android:layout_alignParentStart="true"
@@ -110,15 +111,15 @@
 
 
     <Button
-        android:id="@+id/sendBtn"
-        android:layout_width="220dp"
+        android:id="@+id/applybtn"
+        android:layout_width="150dp"
         android:layout_height="55dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="100dp"
         android:background="@drawable/cam_btn2"
         android:backgroundTint="#A5E889"
         android:elevation="3dp"
-        android:text="Send"
+        android:text="Done"
         android:textColor="#ffff" />
 
     <Space
