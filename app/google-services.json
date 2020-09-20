@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "368347224185",
+    "firebase_url": "https://halbol.firebaseio.com",
+    "project_id": "halbol",
+    "storage_bucket": "halbol.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:368347224185:android:8e00fa955935f861225ca8",
+        "android_client_info": {
+          "package_name": "com.example.googlemapsexample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "368347224185-vfuea769mlugpkg28bsud2aojor5a7mc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgFYTRWIDNNblxyeMZ47Afspp_r8x5PJE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "368347224185-vfuea769mlugpkg28bsud2aojor5a7mc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

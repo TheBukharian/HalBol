@@ -20,18 +20,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.recyclerview.widget.GridLayoutManager
 import com.example.googlemapsexample.Models.EXTRA_LATLONG
 import com.example.googlemapsexample.Models.Loc
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.skydoves.powerspinner.IconSpinnerAdapter
-import com.skydoves.powerspinner.IconSpinnerItem
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_bottom_sheet.*
 import kotlinx.android.synthetic.main.activity_cam_pic.*
+import kotlinx.android.synthetic.main.problem_preview_alertdialog.*
 import java.io.IOException
-
-
-
+import java.util.*
 
 
 class CamPic : AppCompatActivity() {
@@ -43,7 +41,9 @@ class CamPic : AppCompatActivity() {
     var location = Loc("", "")
     var selectedTag:String=""
     var message:String=""
+    var name:String="Murodjon"
     var access:Boolean=false
+
 
 
 
@@ -56,9 +56,6 @@ class CamPic : AppCompatActivity() {
         bottomSheetBehavior.state=BottomSheetBehavior.STATE_COLLAPSED
         sendIMG.startAnimation(rotateIMG)
 
-
-
-
         DescribeLayout.setOnClickListener {
             if(bottomSheetBehavior.state!=BottomSheetBehavior.STATE_EXPANDED){
             bottomSheetBehavior.state=BottomSheetBehavior.STATE_EXPANDED
@@ -67,6 +64,7 @@ class CamPic : AppCompatActivity() {
                 spinnerView.dismiss()
             }
         }
+
         applybtn.setOnClickListener {
 
             message=messageEdit.text.toString()
@@ -91,7 +89,12 @@ class CamPic : AppCompatActivity() {
 
             val dialog=alertDialog.create()
             dialog.show()
+
+            PreviewBtn.setOnClickListener {
+                uploadImageToFirebaseStorage()
+            }
         }
+
 
         mapBtn.setOnClickListener {
             if(PhotoCaptured.tag=="1"){
@@ -121,6 +124,7 @@ class CamPic : AppCompatActivity() {
                         Toast.makeText(this, "${selectedTag}", Toast.LENGTH_SHORT).show()
                 }
         }
+
 
 
 
@@ -252,6 +256,9 @@ class CamPic : AppCompatActivity() {
             if (resultCode == Activity.RESULT_OK && requestCode==IMAGE_CAPTURE_CODE) {
                 Log.d("NOPE", "${resultCode}")
                 getPath2()
+                previewSend_Btn.setOnClickListener {
+                    uploadImageToFirebaseStorage()
+                }
 
                 //set image captured to image view
                 PhotoCaptured.setImageURI(image_uri2)
@@ -284,22 +291,18 @@ class CamPic : AppCompatActivity() {
 
                 val bottomSheetBehavior = BottomSheetBehavior.from(bottomshheet)
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-
-
                 location.Latitude = latLong[0].toString()
                 location.Longitude = latLong[1].toString()
             }
-
         }
         else {
             if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_CAPTURE_CODE) {
                 PhotoCaptured.setImageURI(image_uri1)
                 PhotoCaptured.tag = "1"
 
+
                 //get image description
                 val imageRealPath = getPath1(image_uri1!!)
-
-
                 Toast.makeText(this, getPath1(image_uri1!!), Toast.LENGTH_LONG).show()
 
                 val exif = ExifInterface(imageRealPath)
@@ -320,14 +323,29 @@ class CamPic : AppCompatActivity() {
         }
 
     }
-    private fun saveIssueToFirebaseDatabase(){
+    private fun saveIssueToFirebaseDatabase(ImageUri:String){
+        val ref=FirebaseDatabase.getInstance().getReference("/issues/$selectedTag/$name")
+        val issue=Issue(name,message,selectedTag,image_uri2.toString(),location.Latitude,location.Longitude)
 
+        ref.setValue(issue)
+            .addOnSuccessListener {
+                Log.d("CamPic","We saved everything to Firebase Database")
+            }
     }
     private fun uploadImageToFirebaseStorage(){
-
+        val filename=UUID.randomUUID().toString()
+        val ref=FirebaseStorage.getInstance().getReference("/images/$filename")
+            ref.putFile(image_uri2)
+                .addOnSuccessListener {
+                    Log.d("CamPic","IMAGE UPLOADED TO THE FIREBASE STORAGE")
+                    ref.downloadUrl.addOnSuccessListener {
+                        it.toString()
+                        saveIssueToFirebaseDatabase(it.toString())
+                    }
+                }
     }
 }
-class Issue (val description:String, val tag:String, val problemImageUri:String, val lat:Double, val long:Double)
+class Issue (val name:String,val description:String, val tag:String, val problemImageUri:String, val lat:String, val long:String)
 
 
 
