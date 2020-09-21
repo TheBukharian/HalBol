@@ -68,6 +68,7 @@ class CamPic : AppCompatActivity() {
         applybtn.setOnClickListener {
 
             message=messageEdit.text.toString()
+            name=NameEdit.text.toString()
 
             val inflater = layoutInflater
             val inflate_view=inflater.inflate(R.layout.problem_preview_alertdialog,null)
@@ -76,11 +77,14 @@ class CamPic : AppCompatActivity() {
             val PreviewImage= inflate_view.findViewById<ImageView>(R.id.previewImg)
             val PreviewText=inflate_view.findViewById<TextView>(R.id.preview_Text)
             val PreviewBtn=inflate_view.findViewById<Button>(R.id.previewSend_Btn)
+            val PreviewName=inflate_view.findViewById<TextView>(R.id.preview_name)
+
 
 
             PreviewTag.text=selectedTag
             PreviewImage.setImageURI(image_uri2)
             PreviewText.text=message
+            PreviewName.text=name
 
 
             val alertDialog=AlertDialog.Builder(this)
@@ -345,7 +349,7 @@ class CamPic : AppCompatActivity() {
                 }
     }
 }
-class Issue (val name:String,val description:String, val tag:String, val problemImageUri:String, val lat:String, val long:String)
+class Issue (val Name:String,val description:String, val tag:String, val problemImageUri:String, val lat:String, val long:String)
 
 
 

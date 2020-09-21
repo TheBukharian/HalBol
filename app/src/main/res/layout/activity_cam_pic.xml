@@ -44,7 +44,8 @@
                 android:background="#fff"
                 android:backgroundTint="#2C2727"
                 android:contentDescription="@string/app_name"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                />
 
             <ImageButton
                 android:id="@+id/capture_btn"

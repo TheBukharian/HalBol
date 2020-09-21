@@ -49,37 +49,59 @@
         android:background="#3B4B4444"
         android:layout_marginTop="20dp"/>
 
+    <com.github.florent37.materialtextfield.MaterialTextField
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        app:mtf_labelColor="#C98E8E8E"
+        app:mtf_image="@drawable/arrow"
+        android:layout_marginStart="60dp"
 
-<com.skydoves.powerspinner.PowerSpinnerView
-    android:id="@+id/spinnerView"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/colorPrimary"
-    android:hint="#Tag the problem here..."
-    android:padding="7dp"
-    android:paddingStart="20dp"
-    android:layout_marginTop="5dp"
-    android:textColor="#FFFFFF"
-    android:textColorHint="#8BFFFFFF"
-    android:textSize="14.5sp"
-    android:textStyle="bold"
-    app:spinner_arrow_gravity="end"
-    app:spinner_arrow_padding="8dp"
-    app:spinner_divider_color="#ffffff"
-    app:spinner_divider_size="0.4dp"
-    app:spinner_divider_show="true"
-    app:spinner_item_array="@array/tags"
-    app:spinner_popup_animation="fade"
-    app:spinner_popup_background="#C5E0F3"
-    app:spinner_popup_elevation="14dp"
-    />
+        >
+
+        <EditText
+            android:id="@+id/NameEdit"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Your Full Name"
+            android:layout_marginEnd="10dp"
+            />
+
+    </com.github.florent37.materialtextfield.MaterialTextField>
+
+    <com.skydoves.powerspinner.PowerSpinnerView
+        android:id="@+id/spinnerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:hint="#Tag the problem here..."
+        android:padding="7dp"
+        android:paddingStart="20dp"
+        android:layout_marginTop="5dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#8BFFFFFF"
+        android:textSize="14.5sp"
+        android:textStyle="bold"
+        app:spinner_arrow_gravity="end"
+        app:spinner_arrow_padding="8dp"
+        app:spinner_divider_color="#ffffff"
+        app:spinner_divider_size="0.4dp"
+        app:spinner_divider_show="true"
+        app:spinner_item_array="@array/tags"
+        app:spinner_popup_animation="fade"
+        app:spinner_popup_background="#C5E0F3"
+        app:spinner_popup_elevation="14dp"
+        />
+
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Type a short description for your problem:"
+        android:text="Type a short description of your problem:"
         android:layout_marginTop="30dp"
         android:gravity="center"
         />
+
     <com.sdsmdg.harjot.materialshadows.MaterialShadowViewWrapper
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -105,7 +127,11 @@
             android:paddingEnd="20dp"
             android:paddingBottom="30dp" />
 
+
     </com.sdsmdg.harjot.materialshadows.MaterialShadowViewWrapper>
+
+
+
 
 
 

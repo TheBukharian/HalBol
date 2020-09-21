@@ -13,7 +13,7 @@
     <ImageView
         android:id="@+id/previewImg"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="120dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -47,23 +47,34 @@
         android:textColor="#535353"
         />
 
+    <TextView
+        android:id="@+id/preview_name"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/preview_Text"
+        android:textStyle="bold"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Name" />
+
     <Button
         android:id="@+id/previewSend_Btn"
         android:layout_width="220dp"
         android:layout_height="55dp"
-        android:layout_below="@+id/preview_Text"
+        android:layout_below="@+id/preview_name"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="160dp"
-        android:background="@drawable/alert_btn"
-        android:backgroundTint="#A5E889"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="46dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="30dp"
-        android:text="Send"
-        android:paddingEnd="10dp"
-        android:textColor="#fff"
+        android:background="@drawable/alert_btn"
+        android:backgroundTint="#A5E889"
         android:drawableRight="@android:drawable/ic_menu_send"
-        />
+        android:paddingEnd="10dp"
+        android:text="Send"
+        android:textColor="#fff" />
 
 </RelativeLayout>
