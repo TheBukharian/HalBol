@@ -15,11 +15,15 @@ Find a problematic place location to send it to Government services.
 
 <img src="/1.png" width="270" height="550"/>    <img src="/3.png" width="270" height="550"/>    <img src="/5.png" width="270" height="550"/> 
 <img src="/2.png" width="270" height="550"/>    <img src="/4.png" width="270" height="550"/>    <img src="/6.png" width="270" height="550"/>
-<img src="/7.png" width="270" height="550"/>    <img src="/8.png" width="270" height="550"/>    <img src="/9.jpg" width="270" height="550"/>    
-<img src="/10.jpg" width="270" height="550"/>    <img src="/11.jpg" width="270" height="550"/>    
+<img src="/7.png" width="270" height="550"/>    <img src="/9.jpg" width="270" height="550"/>    
+<img src="/10.jpg" width="270" height="550"/>   <img src="/11.jpg" width="270" height="550"/>    
 
 
-    
+    Note!
+=======
+Be sure you turned on Location function from the setting of your Camera app.
+
+<img src="/8.png" width="270" height="550"/> 
 ---
 
 
